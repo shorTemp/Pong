@@ -8,3 +8,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	global_position.y = lerp(global_position.y,get_global_mouse_position().y,20*delta)
+	pass
