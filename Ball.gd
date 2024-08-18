@@ -14,3 +14,4 @@ func _physics_process(delta):
 
 func _on_paddle_1_body_entered(body):
 	print("collided")
+peen
