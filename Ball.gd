@@ -12,6 +12,8 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity.normalized()*delta*speed)
 	var collider = collision.get_collider() if collision else null
 	
+	if collider != null:
+		print(collider)
 	if collider == $"../Paddle1":
 		bounce_off_paddle(collider)
 	elif collider == $"../Paddle2":

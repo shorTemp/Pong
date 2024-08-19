@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dskl073pudpgv"]
+[gd_scene load_steps=9 format=3 uid="uid://dskl073pudpgv"]
 
 [ext_resource type="Script" path="res://Paddle1.gd" id="1_jqocw"]
 [ext_resource type="Script" path="res://node_2d.gd" id="1_mgwxg"]
 [ext_resource type="Texture2D" uid="uid://cefriwpoiwor" path="res://sprites/paddle.png" id="2_aa8r3"]
 [ext_resource type="Texture2D" uid="uid://bv60d1k5aocp3" path="res://sprites/median.png" id="4_lhyk1"]
+[ext_resource type="Script" path="res://Paddle2.gd" id="4_pah55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tubte"]
 size = Vector2(4, 64)
@@ -34,7 +35,7 @@ texture = ExtResource("2_aa8r3")
 
 [node name="Paddle2" type="AnimatableBody2D" parent="."]
 position = Vector2(134, 192)
-script = ExtResource("1_jqocw")
+script = ExtResource("4_pah55")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle2"]
 position = Vector2(6, 0)
@@ -55,13 +56,13 @@ shape = SubResource("RectangleShape2D_mfbrh")
 
 [node name="Goal" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-position = Vector2(95, 196)
-shape = SubResource("RectangleShape2D_85m5f")
-
 [node name="Median" type="Sprite2D" parent="Goal"]
 position = Vector2(97, 199)
 texture = ExtResource("4_lhyk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(95, 196)
+shape = SubResource("RectangleShape2D_85m5f")
 
 [node name="Goal2" type="Area2D" parent="."]
 position = Vector2(496, 0)
@@ -74,5 +75,23 @@ texture = ExtResource("4_lhyk1")
 position = Vector2(95, 196)
 shape = SubResource("RectangleShape2D_85m5f")
 
+[node name="P1" type="VBoxContainer" parent="."]
+offset_left = 642.0
+offset_right = 682.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="P1"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="P2" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="P2"]
+layout_mode = 2
+text = "0"
+
 [connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
-[connection signal="body_entered" from="Goal2" to="." method="_on_goal_body_entered"]
+[connection signal="body_entered" from="Goal2" to="." method="_on_goal_2_body_entered"]

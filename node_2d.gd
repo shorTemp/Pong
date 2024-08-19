@@ -11,9 +11,17 @@ func _process(delta):
 	pass
 
 func _on_goal_body_entered(body):
-	print(body.name)
 	if body.name.begins_with("Ball"):
 		body.queue_free()
+		var score = $P1.get_node("Label")
+		score.text = str(int(score.text)+1)
+		spawn()
+		
+func _on_goal_2_body_entered(body):
+	if body.name.begins_with("Ball"):
+		body.queue_free()
+		var score = $P2.get_node("Label")
+		score.text = str(int(score.text)+1)
 		spawn()
 
 func spawn():
@@ -25,3 +33,5 @@ func spawn():
 	instance.global_position = Vector2(100, 100)  # Set the initial position of the new ball
 	instance.speed = 200
 	instance.velocity = Vector2(rand_dir,rand_angle)
+
+
