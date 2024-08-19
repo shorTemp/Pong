@@ -1,7 +1,7 @@
 extends AnimatableBody2D
 
-var velocity : Vector2 = Vector2(1,.3)
-var speed : int = 600
+@export var velocity : Vector2
+@export var speed : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +22,7 @@ func _physics_process(delta):
 func bounce_off_paddle(paddle: Node2D):
 	var paddle_sprite = paddle.get_node("Sprite2D")
 	var size = paddle_sprite.texture.get_size()
+	speed += 20
 	
 	var ball_position = global_position.y
 	var paddle_position = paddle.global_position.y
